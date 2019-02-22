@@ -1,10 +1,29 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { BrowserRouter, withRouter } from 'react-router-dom';
+import AuthService from './services/auth'
+import { App } from './components'
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+const Main = withRouter(props => (
+  <App authService={new AuthService()} {...props} />
+))
+
+ReactDOM.render(
+
+  <BrowserRouter>
+    <div>
+      <Main />
+    </div>
+  </BrowserRouter>,
+
+
+  document.getElementById('root'),
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
