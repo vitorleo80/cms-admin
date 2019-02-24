@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
+
 
 // eslint-disable-next-line import/prefer-default-export
 export const Article = () => (

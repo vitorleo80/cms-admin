@@ -25,6 +25,11 @@ export class App extends Component {
     setAuthUser = (authUser) => {
       this.setState({
         authUser,
+      }, () => {
+        // save user's session
+        localStorage.setItem('user', JSON.stringify(authUser))
+        // redirect user
+        this.props.history.push('/');
       })
     }
 
@@ -39,7 +44,7 @@ export class App extends Component {
           <Route path="/login" render={props => <Login {...props} setAuthUser={this.setAuthUser} loginUser={this.props.authService.loginUser} />} />
           <Route path="/signup" render={props => <SignUp {...props} registerUser={this.props.authService.registerUser} setAuthUser={this.setAuthUser} />} />
           <Route path="/article/:slug" component={SingleArticle} />
-          <Route exact path="/articles/create" component={CreateArticle} />
+          <Route exact path="/articles/create" render={props => <CreateArticle {...props} getArticleCategories={this.props.articlesService.getArticleCategories} />} />
           {location.pathname !== '/login' && location.pathname !== '/signup'
                     && <Footer />
                 }
@@ -53,4 +58,8 @@ App.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
   }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+  authService: PropTypes.objectOf(PropTypes.func).isRequired,
 }

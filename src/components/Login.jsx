@@ -33,12 +33,9 @@ export class Login extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    
     try {
       const user = await this.props.loginUser(this.state);
-      localStorage.setItem('user', JSON.stringify(user))
       this.props.setAuthUser(user)
-      this.props.history.push('/');
     } catch (errors) {
       this.setState({ errors });
     }

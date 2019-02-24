@@ -5,12 +5,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, withRouter } from 'react-router-dom';
 import AuthService from './services/auth'
+import ArticlesService from './services/articles'
 import { App } from './components'
 import * as serviceWorker from './serviceWorker';
 
 
 const Main = withRouter(props => (
-  <App authService={new AuthService()} {...props} />
+  <App
+    authService={new AuthService()}
+    articlesService={new ArticlesService()}
+    {...props}
+  />
 ))
 
 ReactDOM.render(

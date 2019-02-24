@@ -34,7 +34,7 @@ export default class AuthService {
     } catch (errors) {
       const formattedErrors = {}
 
-      if (errors.response.status === 422) {
+      if (errors.response && errors.response.status === 422) {
         // eslint-disable-next-line prefer-destructuring
         formattedErrors.email = errors.response.data.email[0]
         return Promise.reject(formattedErrors)
