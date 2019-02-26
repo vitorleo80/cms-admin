@@ -47,7 +47,7 @@ export const SingleArticle = ({ article }) => (
           </div>
         </div>
       </div>
-      <div className="section bt-1 bg-grey">
+      {/* <div className="section bt-1 bg-grey">
         <div className="container">
           <div className="row text-center">
             <div className="text-center p-5">
@@ -55,7 +55,7 @@ export const SingleArticle = ({ article }) => (
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </main>
     {/* END Main container */}
   </div>
