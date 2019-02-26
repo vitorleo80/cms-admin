@@ -12,10 +12,16 @@
         "jsx-a11y/href-no-hash": 0,
         "prefer-default-export": 0,
         "label-has-associated-control": 0,
-        "sort-comp":0
+        "sort-comp":0,
+        "react/destructuring-assignment": "off",
+        "import/prefer-default-export": "off",
+        "react/prop-types": "off",
+        "react/sort-comp": "off",
+        "react/button-has-type" : "off"
     },
     "globals": {
         "localStorage": true,
-        "document": true
+        "document": true,
+        "FormData": true
     }
 }

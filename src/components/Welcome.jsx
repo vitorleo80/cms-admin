@@ -1,26 +1,37 @@
-import React from 'react'
-import {Article} from './Article'
-import {Banner} from './Banner'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Articles } from './Articles'
 
+export class Welcome extends Component {
+  state = {
+    articles: {},
+  }
 
-export const Welcome = () => (
-  <div>
-    <Banner backgroundImage='url(assets/img/bg-gift.jpg)' title='CMS ADMIN' />
-    <main className="main-content bg-gray">
-      <div class="row">
-        <div class="col-12 col-lg-6 offset-lg-3">
-          <Article />
-          <hr />
-          <Article />
-          <nav className="flexbox mt-50 mb-50">
-            <a className="btn btn-white disabled">
-              <i className="ti-arrow-left fs-9 mr-4" /> Newer</a>
-            <a className="btn btn-white" href="#">Older
-    <i className="ti-arrow-right fs-9 ml-4" />
-            </a>
-          </nav>
-        </div>
-      </div>
-    </main>
-  </div>
-)
+  async componentWillMount() {
+    const articles = await this.props.getArticles()
+    this.setState({ articles })
+    this.props.setArticles(articles.data)
+  }
+
+  render() {
+    return (
+      <Articles
+        articles={this.state.articles.data}
+        nextUrl={this.state.articles.next_page_url}
+        prevUrl={this.state.articles.prev_page_url}
+        handlePagination={this.handlePagination}
+      />
+    )
+  }
+
+  handlePagination = async (url) => {
+    const articles = await this.props.getArticles(url)
+    this.setState({ articles })
+    this.props.setArticles(articles.data)
+  }
+}
+
+Welcome.propTypes = {
+  getArticles: PropTypes.func.isRequired,
+  setArticles: PropTypes.func.isRequired,
+}

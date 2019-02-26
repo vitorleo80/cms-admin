@@ -1,9 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-unused-state */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/sort-comp */
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { LoginForm } from './LoginForm'

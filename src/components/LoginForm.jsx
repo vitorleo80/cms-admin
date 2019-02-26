@@ -1,8 +1,5 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable import/prefer-default-export */
 import React from 'react'
 import PropTypes from 'prop-types'
-
 
 export const LoginForm = ({ handleInputChange, handleSubmit, errors }) => (
   <div className="mh-fullscreen bg-img center-vh p-20" style={{ backgroundImage: 'url(assets/img/bg-login.jpg)' }}>
@@ -38,11 +35,6 @@ export const LoginForm = ({ handleInputChange, handleSubmit, errors }) => (
         </div>
       </form>
       <hr className="w-30" />
-      <p className="text-center text-muted fs-13 mt-20">
-                Don't have an account?
-        {' '}
-        <a href="register.html">Sign up</a>
-      </p>
     </div>
   </div>
 )
